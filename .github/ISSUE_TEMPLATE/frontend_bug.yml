@@ -1,0 +1,13 @@
+name: Frontend Bug Report
+description: Create a frontend bug report.
+title: "[FRONTEND-BUG]: "
+type: "Bug"
+labels: ["frontend", "bug"]
+projects: ["FuchsiaRush/1"]
+body:
+  - type: textarea
+    id: bug
+    attributes:
+      label: Your bug report
+      description: Please describe how to reproduce your bug step by step!  
+      placeholder: What happened and how / what did you expect to happen?

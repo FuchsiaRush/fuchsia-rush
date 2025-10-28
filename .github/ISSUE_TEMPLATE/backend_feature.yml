@@ -1,0 +1,13 @@
+name: Backend Feature Request
+description: Create a backend feature request.
+title: "[BACKEND-FEATURE]: "
+type: "Feature"
+labels: ["backend", "feature"]
+projects: ["FuchsiaRush/1"]
+body:
+  - type: textarea
+    id: feature
+    attributes:
+      label: Your feature request
+      description: 
+      placeholder: Basic outline for your feature request

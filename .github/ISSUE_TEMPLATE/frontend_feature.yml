@@ -1,0 +1,13 @@
+name: Frontend Feature Request
+description: Create a frontend feature request.
+title: "[FRONTEND-FEATURE]: "
+type: "Feature"
+labels: ["frontend", "feature"]
+projects: ["FuchsiaRush/1"]
+body:
+  - type: textarea
+    id: feature
+    attributes:
+      label: Your feature request
+      description: 
+      placeholder: Basic outline for your feature request

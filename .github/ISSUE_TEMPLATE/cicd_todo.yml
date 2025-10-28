@@ -1,0 +1,13 @@
+name: CI/CD ToDo
+description: Create a CI/CD ToDo request.
+title: "[CI/CD-TODO]: "
+type: "ToDo"
+labels: ["CI/CD"]
+projects: ["FuchsiaRush/1"]
+body:
+  - type: textarea
+    id: todo
+    attributes:
+      label: Your CI/CD ToDo
+      description: 
+      placeholder: Basic outline of the ToDo
