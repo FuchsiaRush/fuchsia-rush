@@ -1,7 +1,7 @@
 name: CI/CD ToDo
 description: Create a CI/CD ToDo request.
 title: "[CI/CD-TODO]: "
-type: "ToDo"
+type: "Task"
 labels: ["CI/CD"]
 projects: ["FuchsiaRush/1"]
 body:
