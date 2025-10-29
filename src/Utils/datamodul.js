@@ -80,30 +80,20 @@ export async function formatToQuizStructure() {
     const fragen = await getAllQuestions();
     const antworten = await getAllAnswers();
 
-    return {
-      id: "someID",
-      owner: "7233f0e1-bf62-4f98-a06f-96b10e68e0da",
-      questions: fragen.map((frage) => {
-        // Antworten zur aktuellen Frage finden
-        const relatedAnswers = antworten.filter(
-          (ans) => ans.FrageID === frage.FrageID
-        );
-
-        return {
-          id: frage.FrageID,
-          text: frage.FrageSTR,
-          answers: relatedAnswers.map((ans) => ({
-            id: ans.AntwortID,
-            value: ans.Antwort,
-          })),
-          correctAnswerIds: relatedAnswers
-            .filter((ans) => ans.isCorrect === 1 || ans["T/F"] === 1) // supports both column names
-            .map((ans) => ans.AntwortID),
-          timeToAnswer: 20000,
-          scoreMultiplier: 1,
-        };
-      }),
-    };
+    return fragen.map(q => {
+      const answers = antworten.filter(a => a.id == q.id);
+      return {
+        id: q.id,
+        text: q.text,
+        answers: answers.map(a => {
+          return {
+            id: a.AntwortID,
+            value: a.text
+          }
+        }),
+        correctAnswerIds: answers.filter(a => a.TorF).map(a => a.AntwortID)
+      };
+    })
   } catch (err) {
     console.error("Fehler beim Formatieren:", err);
     throw err;
