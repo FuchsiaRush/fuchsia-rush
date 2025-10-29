@@ -47,10 +47,10 @@ function addQuestion(frage) {
  * @param tabelle 
  * @returns all Questions and answers
  */
-export function getAll(tabelle) {
+export function getAll() {
   return new Promise((resolve, reject) => {
-    const query = "Select * FROM ?";
-    db.query(query, [tabelle], (err, results) => {
+    const query = "Select *";
+    db.query(query, (err, results) => {
       if (err) {
         console.error("Fehler bei Select:", err);
         reject(err);
