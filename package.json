@@ -1,0 +1,26 @@
+{
+  "name": "fuchsia-rush",
+  "version": "1.0.0",
+  "description": "![game_loop](/.meta/game_loop.png)",
+  "homepage": "https://github.com/FuchsiaRush/fuchsia-rush#readme",
+  "bugs": {
+    "url": "https://github.com/FuchsiaRush/fuchsia-rush/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FuchsiaRush/fuchsia-rush.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
