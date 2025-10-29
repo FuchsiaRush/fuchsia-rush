@@ -1,4 +1,4 @@
-FROM node:11.6.1 AS builder
+FROM node:lts-alpine AS builder
 
 WORKDIR /usr/src/app
 
