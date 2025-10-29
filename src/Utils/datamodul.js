@@ -55,6 +55,7 @@ export function getAllQuestions() {
         console.error("Fehler bei Select:", err);
         reject(err);
       } else {
+        console.log(results);
         resolve(results);
       }
     });
@@ -68,6 +69,7 @@ export function getAllAnswers() {
         console.error("Fehler bei Select:", err);
         reject(err);
       } else {
+        console.log(results);
         resolve(results);
       }
     });
