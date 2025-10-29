@@ -49,7 +49,7 @@ function addQuestion(frage) {
  */
 export function getAllQuestions() {
   return new Promise((resolve, reject) => {
-    const query = "Select * FROM fragen ORDER BY FragenID";
+    const query = "Select * FROM fragen ORDER BY id";
     db.query(query, (err, results) => {
       if (err) {
         console.error("Fehler bei Select:", err);
@@ -63,7 +63,7 @@ export function getAllQuestions() {
 }
 export function getAllAnswers() {
   return new Promise((resolve, reject) => {
-    const query = "Select * FROM antworten ORDER BY FragenID";
+    const query = "Select * FROM antworten ORDER BY id";
     db.query(query, (err, results) => {
       if (err) {
         console.error("Fehler bei Select:", err);
@@ -74,4 +74,38 @@ export function getAllAnswers() {
       }
     });
   });
+}
+export async function formatToQuizStructure() {
+  try {
+    const fragen = await getAllQuestions();
+    const antworten = await getAllAnswers();
+
+    return {
+      id: "someID",
+      owner: "7233f0e1-bf62-4f98-a06f-96b10e68e0da",
+      questions: fragen.map((frage) => {
+        // Antworten zur aktuellen Frage finden
+        const relatedAnswers = antworten.filter(
+          (ans) => ans.FrageID === frage.FrageID
+        );
+
+        return {
+          id: frage.FrageID,
+          text: frage.FrageSTR,
+          answers: relatedAnswers.map((ans) => ({
+            id: ans.AntwortID,
+            value: ans.Antwort,
+          })),
+          correctAnswerIds: relatedAnswers
+            .filter((ans) => ans.isCorrect === 1 || ans["T/F"] === 1) // supports both column names
+            .map((ans) => ans.AntwortID),
+          timeToAnswer: 20000,
+          scoreMultiplier: 1,
+        };
+      }),
+    };
+  } catch (err) {
+    console.error("Fehler beim Formatieren:", err);
+    throw err;
+  }
 }

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllAnswers, getAllQuestions } from "../Utils/datamodul.js";
+import { formatToQuizStructure, getAllQuestions } from "../Utils/datamodul.js";
 
 const router = Router();
 
@@ -19,7 +19,7 @@ router.get("/questions", async (req, res) => {
 });
 router.get("/answers", async (req, res) => {
   try {
-    const results = await getAllAnswers();
+    const results = await formatToQuizStructure();
     res.status(200).json(results);
   } catch (err) {
     console.error("Fehler beim Abrufen der Antworten:", err);
