@@ -128,7 +128,6 @@ io.on("connection", (socket) => {
     if (!game) return;
 
     socket.join(gameId);
-
     if (!game.owner.socket) {
       game.owner.socket = socket;
       game.owner.id = randomUUID();
@@ -139,6 +138,17 @@ io.on("connection", (socket) => {
         score: 0,
         answers: null,
       };
+
+      socket.emit(
+        "lobby-state",
+        game.players.map((p) => {
+          return { id: p.id, displayName: p.displayName };
+        })
+      );
+      io.to(game.gameId).emit("new-player", {
+        id: player.id,
+        displayName: player.displayName,
+      });
 
       player.socket = socket;
       game.players.push(player);
