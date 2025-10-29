@@ -7,3 +7,5 @@ Wie lautet der Command um die installierte Version Gits zu erhalten? Antworten: 
 Wie viele Kuchen muss Göki noch backen? Antworten: 5, 2, 3(richtig), 8, alle
 
 Wie kann man den branch in Git wechseln? Antworten: git switch(richtig), git move, git jump, git hop
+
+Hatten wir ein Git Seminar? Antwort: Nein, Ja, Wir hatten ein Seminar?, Fuchsia (richtig)
