@@ -2,8 +2,8 @@ name: Main Branch Deployment
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "v*"
 
 env:
   IMAGE_NAME: ghcr.io/${{ github.repository }} #setze die Varibale auf den Packages link mit /name des repos
