@@ -1,0 +1,9 @@
+Basic Fragen:
+
+Wie alt ist Marcel Davis? Antworten: 60(richtig), 55, 43, 52, 62
+
+Wie lautet der Command um die installierte Version Gits zu erhalten? Antworten: git -version(richtig), git help version, getGitVersion, gitVersion
+
+Wie viele Kuchen muss Göki noch backen? Antworten: 5, 2, 3(richtig), 8, alle
+
+Wie kann man den branch in Git wechseln? Antworten: git switch(richtig), git move, git jump, git hop
