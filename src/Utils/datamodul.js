@@ -18,7 +18,7 @@ db.connect((err) => {
 });
 
 
-//TODO: add ID generation, add Object struktur
+//TODO: has to be Async, add ID generation and add Object struktur/ how is object build
 function addQuestion(frage) {
   const sqlQue = "INSERT INTO fragen (FrageID, FrageSTR) VALUES (?)";
   db.query(sqlQue, [frage], (err) => {
