@@ -92,11 +92,17 @@ function evaluateQuestion(game) {
   game.currentQuestionPhase = "EVALUATE";
 
   for (let player of game.players) {
-    for (let i = 0; i < player.answers.length; i++) {
+    for (
+      let i = 0;
+      i <
+      game.template.questions[game.currentQuestionIndex].correctAnswerIds
+        .length;
+      i++
+    ) {
       if (
-        !game.template.questions[
-          game.currentQuestionIndex
-        ].correctAnswerIds.indexOf(player.answers[i]) >= 0
+        player.answers[i].indexOf(
+          game.template.questions[game.currentQuestionIndex].correctAnswerIds[i]
+        ) < 0
       ) {
         break;
       }
