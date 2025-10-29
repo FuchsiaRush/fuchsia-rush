@@ -7,8 +7,6 @@ on:
       - "v*"
   workflow_dispatch:
       
-env:
-  IMAGE_NAME: ghcr.io/${{ toLower(github.repository) }} #setze die Varibale auf den Packages link mit /name des repos
 
 jobs:
   deploy:
@@ -28,13 +26,18 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build Docker Image
+      
+      - name: Build Docker image
         run: |
-          docker build -t $IMAGE_NAME:latest .
-          docker tag $IMAGE_NAME:latest $IMAGE_NAME:${{ github.sha }}
-
-      - name: Push Docker Container
+          REPO_LOWER=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
+          BRANCH_NAME=$(echo ${{ github.ref_name }} | tr '[:upper:]' '[:lower:]') # Get the branch name in lowercase
+          docker build . -t ghcr.io/$REPO_LOWER/portfolio:$BRANCH_NAME
+ 
+      - name: Push Docker image to GitHub Packages
         run: |
-          docker push $IMAGE_NAME:latest
-          docker push $IMAGE_NAME:${{ github.sha }}
+          REPO_LOWER=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
+          BRANCH_NAME=$(echo ${{ github.ref_name }} | tr '[:upper:]' '[:lower:]') # Get the branch name in lowercase
+          docker push ghcr.io/$REPO_LOWER/portfolio:$BRANCH_NAME
+
+      #selfmade
+ 
