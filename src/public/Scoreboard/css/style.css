@@ -6,15 +6,32 @@ body {
     background-color: var(--backgroundColor);
     display: flex;
     flex-direction: column;
+    margin: 0;
+    align-items: center;
+    gap: 1rem;
 }
 
 div {
     background-color: var(--secondaryColor);
+    width: 15rem;
+    padding: 1.5rem 0;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+div+div {
+    width: 20rem;
 }
 
 h1 {
     background-color: var(--primaryColor);
     width: 100vw;
-    justify-content: center;
-    align-items: center;
+    padding: 2rem 0;
+    text-align: center;
+    margin-bottom: 15rem;
+}
+
+span {
+    color: var(--tertiaryColor);
 }
