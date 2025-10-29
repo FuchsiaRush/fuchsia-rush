@@ -19,7 +19,7 @@ db.connect((err) => {
 
 
 /**
- * Returns the values of all questions 
+ * Returns the values of all questions (Benni was here #fuchsia) 
  * @param tabelle 
  * @returns all Questions and answers
  */
