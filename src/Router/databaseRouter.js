@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllAnswer, getAllQuestion } from "../Utils/datamodul.js";
+import { getAllAnswers, getAllQuestions } from "../Utils/datamodul.js";
 
 const router = Router();
 
