@@ -18,7 +18,7 @@ db.connect((err) => {
 });
 
 
-//TODO: add ID generation, add Object struktur
+//TODO: has to be Async, add ID generation and add Object struktur/ how is object build
 function addQuestion(frage) {
   const sqlQue = "INSERT INTO fragen (FrageID, FrageSTR) VALUES (?)";
   db.query(sqlQue, [frage], (err) => {
@@ -47,10 +47,10 @@ function addQuestion(frage) {
  * @param tabelle 
  * @returns all Questions and answers
  */
-export function getAll(tabelle) {
+export function getAll() {
   return new Promise((resolve, reject) => {
-    const query = "Select * FROM ?";
-    db.query(query, [tabelle], (err, results) => {
+    const query = "Select *";
+    db.query(query, (err, results) => {
       if (err) {
         console.error("Fehler bei Select:", err);
         reject(err);
