@@ -1,0 +1,64 @@
+body {
+    --backgroundColor: #120D1C;
+    --primaryColor: #8E8383;
+    --secondaryColor: #D9D9D9;
+    --tertiaryColor: #FF00FF;
+    background-color: var(--backgroundColor);
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    align-items: center;
+    gap: 1rem;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+#leaderboard {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 0;
+}
+
+.css-name {
+    width: 15rem;
+    background-color: var(--secondaryColor);
+    padding: 1.5rem 0;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+.css-place {
+    width: 20rem;
+    background-color: var(--secondaryColor);
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 20px;
+}
+
+.js-place1 {
+    height: 5rem;
+}
+
+.js-place2 {
+    height: 2.5rem;
+}
+
+h1 {
+    background-color: var(--primaryColor);
+    width: 100vw;
+    padding: 2rem 0;
+    text-align: center;
+    margin-bottom: 15rem;
+}
+
+span {
+    color: var(--tertiaryColor);
+}
