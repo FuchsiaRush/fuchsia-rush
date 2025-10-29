@@ -1,6 +1,6 @@
 services:
   app:
-    image: fuchsia-rush/fuchsia-rush:latest
+    image: ghcr.io/fuchsiarush/fuchsia-rush:latest
     container_name: fuchsia-rush-app
     environment:
       MYSQL_HOST: db
@@ -9,7 +9,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3000:3000"
-    depdens_on:
+    depends_on:
       - db
     restart: always
 
@@ -30,7 +30,7 @@ services:
     container_name: cloudflare_tunnel
     command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
     restart: unless-stopped
-    depdens_on:
+    depends_on:
       - app
 
 volumes:
