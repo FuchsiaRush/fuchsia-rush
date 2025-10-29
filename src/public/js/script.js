@@ -34,9 +34,12 @@ function joinGame(gameID) {
         }
         return response.json()
     })
-    .then((data) => {
+    .then(() => {
         window.location.replace(`http://path/${gameID}`)
     })
+    .catch((error) => {
+        console.error("Fetch error:", error)
+    });
 }
 
 //##############################################################################################################################
