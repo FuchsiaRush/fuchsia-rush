@@ -10,7 +10,7 @@ const router = Router();
 router.get("/Questions", (req,res) => {
     res.status(200).send(getAllQuestions())
 })
-router.get("/Answer", (req,res) => {
+router.get("/Answers", (req,res) => {
     res.status(200).send(getAllAnswers())
 })
 
