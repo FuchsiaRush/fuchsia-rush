@@ -1,5 +1,7 @@
 //Richard##########################################################################################################################
 
+const { response } = require("express");
+
 async function startGame(templateID) {
     fetch(`http://path/`, {
         header: {
@@ -28,18 +30,18 @@ function joinGame(gameID) {
         })
     }
     )
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`)
-        }
-        return response.json()
-    })
-    .then(() => {
-        window.location.replace(`http://path/${gameID}`)
-    })
-    .catch((error) => {
-        console.error("Fetch error:", error)
-    });
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`)
+            }
+            return response.json()
+        })
+        .then(() => {
+            window.location.replace(`http://path/${gameID}`)
+        })
+        .catch((error) => {
+            console.error("Fetch error:", error)
+        });
 }
 
 //##############################################################################################################################
@@ -51,6 +53,31 @@ function joinGame(gameID) {
 //##############################################################################################################################
 
 //Nikola##########################################################################################################################
+
+function selectAnswer(gameID, questionID, answerID) {
+
+    fetch(`https://abc/${gameID}`, {
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json, text-plain, */*",
+            "X-Requested-With": "XMLHttp"
+        },
+        method: "POST",
+        body: JSON.stringify({
+            "game-id": gameID,
+            "question-id": questionID,
+            "answer-id": answerID
+        })
+    })
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`ERROR: Status: ${response.status}`)
+        }
+    })
+    .catch((error)=>{
+        console.error(error)
+    })
+}
 
 
 
