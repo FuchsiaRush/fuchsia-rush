@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 29. Okt 2025 um 14:41
+-- Erstellungszeit: 29. Okt 2025 um 15:58
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -28,17 +28,17 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `antworten` (
-  `Antwort` varchar(255) DEFAULT NULL,
+  `text` varchar(255) DEFAULT NULL,
   `TorF` tinyint(1) NOT NULL DEFAULT 0,
   `AntwortID` varchar(255) NOT NULL,
-  `FragenID` varchar(255) DEFAULT NULL
+  `id` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Daten für Tabelle `antworten`
 --
 
-INSERT INTO `antworten` (`Antwort`, `TorF`, `AntwortID`, `FragenID`) VALUES
+INSERT INTO `antworten` (`text`, `TorF`, `AntwortID`, `id`) VALUES
 ('60', 1, 'A1', 'F1'),
 ('2', 0, 'A11', 'F3'),
 ('3', 1, 'A12', 'F3'),
@@ -67,15 +67,15 @@ INSERT INTO `antworten` (`Antwort`, `TorF`, `AntwortID`, `FragenID`) VALUES
 --
 
 CREATE TABLE `fragen` (
-  `FrageSTR` varchar(255) DEFAULT NULL,
-  `FragenID` varchar(255) NOT NULL
+  `text` varchar(255) DEFAULT NULL,
+  `id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Daten für Tabelle `fragen`
 --
 
-INSERT INTO `fragen` (`FrageSTR`, `FragenID`) VALUES
+INSERT INTO `fragen` (`text`, `id`) VALUES
 ('Wie alt ist Marcel Davis?', 'F1'),
 ('Wie lautet der Command um die installierte Version Gits zu erhalten?', 'F2'),
 ('Wie viele Kuchen muss Göki noch backen?', 'F3'),
@@ -91,13 +91,13 @@ INSERT INTO `fragen` (`FrageSTR`, `FragenID`) VALUES
 --
 ALTER TABLE `antworten`
   ADD PRIMARY KEY (`AntwortID`),
-  ADD KEY `FragenID` (`FragenID`);
+  ADD KEY `FragenID` (`id`);
 
 --
 -- Indizes für die Tabelle `fragen`
 --
 ALTER TABLE `fragen`
-  ADD PRIMARY KEY (`FragenID`);
+  ADD PRIMARY KEY (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
