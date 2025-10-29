@@ -1,27 +1,20 @@
 {
   "main": {
-    "id": "19c0d2ff174cb414",
+    "id": "175810b2d7132302",
     "type": "split",
     "children": [
       {
-        "id": "692b4eeb40bce227",
+        "id": "96cb4e48e0375f3e",
         "type": "tabs",
         "children": [
           {
-            "id": "b626a1a0a8288e01",
+            "id": "9072c2759712ceca",
             "type": "leaf",
             "state": {
-              "type": "canvas",
-              "state": {
-                "file": "Structure.canvas",
-                "viewState": {
-                  "x": 111.46193263533486,
-                  "y": 374.9428235506523,
-                  "zoom": -0.5110673321783537
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "Structure"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -30,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "bdf6b2b25d7cef00",
+    "id": "7dedaf3c987a4ca8",
     "type": "split",
     "children": [
       {
-        "id": "28f4b4d85e079c1e",
+        "id": "449a659a2b59ab02",
         "type": "tabs",
         "children": [
           {
-            "id": "45895e527a5718cf",
+            "id": "ebbeca2ca2ec572f",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -51,7 +44,7 @@
             }
           },
           {
-            "id": "ab95bc8a451f536a",
+            "id": "b7011a693794a325",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -68,7 +61,7 @@
             }
           },
           {
-            "id": "08f8649ac60b3976",
+            "id": "bca6a36064f83dcc",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -81,24 +74,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 295.5,
-    "collapsed": true
+    "width": 300
   },
   "right": {
-    "id": "f605d4be81125956",
+    "id": "4ed2034911e55671",
     "type": "split",
     "children": [
       {
-        "id": "f086ce081ed601cb",
+        "id": "4119cae52387732a",
         "type": "tabs",
         "children": [
           {
-            "id": "bce72a01eb98d51b",
+            "id": "c4945556da225622",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Structure.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,25 +99,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Structure"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "c6d308eb9a9e803b",
+            "id": "cd20191c8b77ad83",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Structure.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Structure"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "4db4841b5e3f4f35",
+            "id": "0624ff9202caab2c",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -141,18 +131,17 @@
             }
           },
           {
-            "id": "4650635dd2fe50da",
+            "id": "d1b7720ee3c3e56e",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Structure.canvas",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Structure"
+              "title": "Outline"
             }
           }
         ]
@@ -173,13 +162,6 @@
       "bases:Create new base": false
     }
   },
-  "active": "b626a1a0a8288e01",
-  "lastOpenFiles": [
-    "test.md",
-    "Structure.canvas",
-    "Untitled 1.md",
-    "Untitled.md",
-    "create a link.md",
-    "Welcome.md"
-  ]
+  "active": "9072c2759712ceca",
+  "lastOpenFiles": []
 }
