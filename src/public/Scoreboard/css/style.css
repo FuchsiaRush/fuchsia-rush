@@ -1,0 +1,20 @@
+body {
+    --backgroundColor: #120D1C;
+    --primaryColor: #8E8383;
+    --secondaryColor: #D9D9D9;
+    --tertiaryColor: #FF00FF;
+    background-color: var(--backgroundColor);
+    display: flex;
+    flex-direction: column;
+}
+
+div {
+    background-color: var(--secondaryColor);
+}
+
+h1 {
+    background-color: var(--primaryColor);
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
