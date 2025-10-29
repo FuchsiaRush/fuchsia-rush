@@ -1,11 +1,18 @@
-import { randomUUID } from "crypto";
 import express from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
+import {
+  handleDisconnect,
+  handleOnRoomJoin,
+  handleStartGame,
+  handleSubmitAnswer,
+} from "./utils/game.js";
+import { config } from "dotenv";
+config();
 
 const app = express();
 const server = createServer(app);
-const io = new Server(server);
+export const io = new Server(server);
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
@@ -13,59 +20,52 @@ app.use(express.urlencoded({ extended: true }));
 app.disable("x-powered-by");
 
 let game_template = {
-  id: "adslfkjaldfsjlfkj",
-  owner: "",
+  id: "1f67d330-1948-44d6-b132-d389e07599d0",
+  name: "Beispielspiel",
   questions: [
     {
-      id: "123124",
-      text: "Frage",
+      id: "55d7c464-7485-4cd5-82d7-63ff7282e200",
+      text: "Frage XY",
       answers: [
         {
-          id: "1212",
-          value: "Yes",
+          id: "a9379a2d-04ae-46a9-a171-3ff6baae265c",
+          value: "Falsch!",
         },
         {
-          id: "11",
-          value: "No",
+          id: "8b86cae2-ff93-47ba-ae29-4a921517915c",
+          value: "Richtig!",
         },
         {
-          id: "2",
-          value: "Noooo",
+          id: "af81c396-f3b8-42b1-981f-d1594bd29669",
+          value: "Falsch!",
         },
       ],
-      correctAnswerIds: ["11"],
-      timeToAnswer: 1000,
-      scoreMultiplier: 1,
-    },
-    {
-      id: "123125",
-      text: "Frage2",
-      answers: [
-        {
-          id: "1212",
-          value: "Yes",
-        },
-        {
-          id: "11",
-          value: "No",
-        },
-        {
-          id: "2",
-          value: "Noooo",
-        },
-      ],
-      correctAnswerIds: ["11"],
-      timeToAnswer: 1000,
+      correctAnswerIds: ["8b86cae2-ff93-47ba-ae29-4a921517915c"],
+      timeToAnswer: 30000,
       scoreMultiplier: 1,
     },
   ],
 };
 
-let GAMES = [
-  {
-    gameId: "320905",
-    owner: {
-      id: "123",
+export let GAMES = [];
+
+app.use("/", express.static("src/public"));
+
+app.get("/api/v1/game-templates", (req, res) => {
+  res.json([game_template]);
+});
+
+app.post("/api/v1/host-game", (req, res) => {
+  const { templateId } = req.body;
+
+  if (templateId !== game_template.id) {
+    return res.status(400).json({ error: "Invalid template ID" });
+  }
+
+  const newGame = {
+    gameId: Math.floor(100000 + Math.random() * 900000).toString(),
+    host: {
+      id: null,
       socket: null,
     },
     template: game_template,
@@ -73,133 +73,21 @@ let GAMES = [
     currentQuestionIndex: 0,
     currentQuestionPhase: "SHOW_QUESTION",
     phase: "LOBBY",
-  },
-];
+  };
 
-function nextQuestion(game) {
-  game.currentQuestionPhase = "SHOW_QUESTION";
-  const question = game.template.questions[game.currentQuestionIndex];
-  io.to(game.gameId).emit("question", {
-    id: question.id,
-    text: question.text,
-    answers: question.answers,
-    scoreMultiplier: question.scoreMultiplier,
-    timeToAnswer: question.timeToAnswer,
-  });
-}
+  GAMES.push(newGame);
 
-function evaluateQuestion(game) {
-  game.currentQuestionPhase = "EVALUATE";
-
-  for (let player of game.players) {
-    for (
-      let i = 0;
-      i <
-      game.template.questions[game.currentQuestionIndex].correctAnswerIds
-        .length;
-      i++
-    ) {
-      if (
-        player.answers[i].indexOf(
-          game.template.questions[game.currentQuestionIndex].correctAnswerIds[i]
-        ) < 0
-      ) {
-        break;
-      }
-
-      if (i == player.answers.length - 1) {
-        player.score++;
-      }
-    }
-
-    player.answers = null;
-  }
-}
-
-app.use("/", express.static("src/public"));
+  res.json({ gameId: newGame.gameId });
+});
 
 io.on("connection", (socket) => {
-  console.log("New connection!");
+  socket.on("join-room", (data) => handleOnRoomJoin(socket, data));
 
-  socket.on("join-room", (data) => {
-    const { gameId, displayName } = data;
-    if (!gameId || !displayName) return;
-    const game = GAMES.find((g) => g.gameId == gameId && g.phase == "LOBBY");
-    if (!game) return;
+  socket.on("start-game", (data) => handleStartGame(socket, data));
 
-    socket.join(gameId);
-    if (!game.owner.socket) {
-      game.owner.socket = socket;
-      game.owner.id = randomUUID();
-    } else {
-      const player = {
-        id: randomUUID(),
-        displayName,
-        score: 0,
-        answers: null,
-      };
+  socket.on("submit-answer", (data) => handleSubmitAnswer(socket, data));
 
-      socket.emit(
-        "lobby-state",
-        game.players.map((p) => {
-          return { id: p.id, displayName: p.displayName };
-        })
-      );
-      io.to(game.gameId).emit("new-player", {
-        id: player.id,
-        displayName: player.displayName,
-      });
-
-      player.socket = socket;
-      game.players.push(player);
-    }
-
-    console.log("New Player:", game);
-  });
-
-  socket.on("start-game", (data) => {
-    const { gameId } = data;
-    if (!gameId) return;
-    const game = GAMES.find((g) => g.gameId == gameId && g.phase == "LOBBY");
-    if (!game) return;
-    if (game.owner.socket.id !== socket.id) return;
-    game.phase = "IN_GAME";
-    nextQuestion(game);
-  });
-
-  socket.on("answer", (data) => {
-    const { gameId, questionId, answerIds } = data;
-    const game = GAMES.find((g) => g.gameId == gameId && g.phase == "IN_GAME");
-    if (!game || game.currentQuestionPhase !== "SHOW_QUESTION") return;
-    const player = game.players.find((p) => p.socket.id == socket.id);
-    if (!player) return;
-    if (!game.template.questions[game.currentQuestionIndex].id == questionId)
-      return; // validate answer is for the current question
-    player.answers = answerIds; // set answer ids in player
-
-    if (
-      game.players
-        .map((p) => p.answers)
-        .flat()
-        .filter((a) => a != null).length >=
-      game.template.questions[game.currentQuestionIndex].correctAnswerIds
-        .length *
-        game.players.length
-    ) {
-      evaluateQuestion(game);
-      game.currentQuestionIndex++;
-      if (game.template.questions.length - 1 > game.currentQuestionIndex) {
-        nextQuestion(game);
-      } else {
-        io.to(game.gameId).emit(
-          "game-finished",
-          game.players.map((p) => {
-            return { id: p.id, displayName: p.displayName, score: p.score };
-          })
-        );
-      }
-    }
-  });
+  socket.on("disconnect", () => handleDisconnect(socket));
 });
 
 server.listen(PORT, () => {

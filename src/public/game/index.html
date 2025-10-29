@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="./script.js" defer></script>
+    <title>Fuchsia Rush</title>
 </head>
 <body>
-    <h1>HALLO!</h1>
+    <div id="choose-name" class="screen">
+        <label for="name-input">Enter your name:</label>
+        <input type="text" id="name-input" placeholder="Your Name">
+        <button id="join-button">Enter</button>
+    </div>
+    <div id="lobby" class="screen">
+        <!-- Only show this if we are the host => JS -->
+        <h1 id="game-id" style="display: none;"></h1>
+    
+        <h2>Waiting for the game to start...</h2>
+        <div id="lobby-players"></div>
+    
+        <!-- Only show this if we are the host => JS -->
+        <button id="start-button" style="display: none;">Start Game</button>
+    </div>
+    <div id="question" class="screen">
+        <div id="question-text"></div>
+        <div id="answers-container"></div>
+        <div id="timer">Time left: <span id="time-left"></span> seconds</div>
+    </div>
+    <div id="leaderboard" class="screen"></div>
+    <div id="results" class="screen">
+        <h1>Results</h1>
+        <div id="results-container"></div>
+    </div>
 </body>
 </html>
