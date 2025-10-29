@@ -1,43 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>HALLO!</h1>
-  </body>
-  <script type="module">
-    import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spielcode Eingabe</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-    const socket = io("http://localhost:3000");
+  <div class="container">
+    <div class="code-box">
+      <label for="code-input" class="css-code-label js-code">Enter Code</label>
+      <input type="text" id="code-input" class="code-input" placeholder="">
+    </div>
 
-    window.socket = socket;
-
-    socket.on("connect", () => {
-      socket.emit("join-room", { gameId: "320905", displayName: "Test User" });
-      console.log(`Connected to server with id: ${socket.id}`);
-    });
-
-    socket.on("lobby-state", (data) => {
-      console.log("Current Lobby:", data);
-    });
-
-    socket.on("new-player", (data) => {
-      console.log("New player:", data);
-    });
-
-    socket.on("question", (data) => {
-      console.log(data);
-    });
-
-    socket.on("game-finished", (data) => {
-      console.log(data);
-    });
-
-    socket.on("disconnect", (reason) => {
-      console.log("Disconnected from server:", reason);
-    });
-  </script>
+    <div class="game-bar">
+      <div class="css-gameselection">Spiel Name 1</div>
+      <div class="css-gameselection">Spiel Name 2</div>
+      <div class="css-gameselection">Spiel Name 3</div>
+      <div class="css-gameselection">Spiel Name 4</div>
+      <div class="css-gameselection">Spiel Name 5</div>
+    </div>
+  </div>
+</body>
 </html>
