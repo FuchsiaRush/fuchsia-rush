@@ -47,9 +47,22 @@ function addQuestion(frage) {
  * @param tabelle 
  * @returns all Questions and answers
  */
-export function getAll() {
+export function getAllQuestions() {
   return new Promise((resolve, reject) => {
-    const query = "Select *";
+    const query = "Select * FROM fragen ORDER BY FragenID";
+    db.query(query, (err, results) => {
+      if (err) {
+        console.error("Fehler bei Select:", err);
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+}
+export function getAllAnswers() {
+  return new Promise((resolve, reject) => {
+    const query = "Select * FROM antworten ORDER BY FragenID";
     db.query(query, (err, results) => {
       if (err) {
         console.error("Fehler bei Select:", err);

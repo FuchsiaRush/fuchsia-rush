@@ -1,12 +1,17 @@
 import { Router } from "express";
-import { getAll } from "../Utils/datamodul.js";
+import { getAll, getAllAnswer, getAllQuestion } from "../Utils/datamodul.js";
 
 const router = Router();
 
 
 //TODO: add Post req for addQuestion function
-router.post("/", (req,res) => {
-    res.status(200).json(getAll());
+
+
+router.get("/Questions", (req,res) => {
+    res.status(200).send(getAllQuestions())
+})
+router.get("/Answer", (req,res) => {
+    res.status(200).send(getAllAnswers())
 })
 
 
