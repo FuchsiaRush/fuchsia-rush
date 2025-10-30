@@ -1,11 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <h1>HALLO!</h1>
-</body>
+  </head>
+  <body>
+    <div class="login" id="page">
+      <div class="container">
+        <div class="code-box">
+          <label for="code-input" class="css-code-label js-code"
+            >Enter Nickname</label
+          >
+          <input
+            type="text"
+            id="code-input"
+            class="code-input"
+            placeholder=""
+          />
+        </div>
+      </div>
+    </div>
+    <div class="lobby" id="page">
+      <div class="css-lobby-page-wrapper js-lobby-page">
+        <div class="css-header-area js-game-header">
+          <div class="css-game-title js-game-name">Game Name</div>
+          <div class="css-game-code js-game-code">Code ### ###</div>
+        </div>
+
+        <div class="css-lobby-container js-player-slots-area">
+          <div class="css-player-slot js-player-slot-1">
+            <div class="css-nickname-display js-nickname-1">Nickname 1</div>
+          </div>
+
+          <div class="css-player-slot js-player-slot-2">
+            <div class="css-nickname-display js-nickname-2">Nickname 2</div>
+          </div>
+
+          <div class="css-player-slot js-player-slot-3">
+            <div class="css-nickname-display js-nickname-3">Nickname 3</div>
+          </div>
+
+          <div class="css-player-slot js-player-slot-4">
+            <div class="css-nickname-display js-nickname-4">Nickname 4</div>
+          </div>
+
+          <div class="css-player-slot js-player-slot-5">
+            <div class="css-nickname-display js-nickname-5">Nickname 5</div>
+          </div>
+
+          <div class="css-player-slot js-player-slot-6">
+            <div class="css-nickname-display js-nickname-6">Nickname 6</div>
+          </div>
+
+          <div class="css-player-slot js-player-slot-7">
+            <div class="css-nickname-display js-nickname-7">Nickname 7</div>
+          </div>
+
+          <div class="css-player-slot js-player-slot-8">
+            <div class="css-nickname-display js-nickname-8">Nickname 8</div>
+          </div>
+          <div class="css-player-slot js-player-slot-9">
+            <div class="css-nickname-display js-nickname-9">Nickname 9</div>
+          </div>
+
+          <div class="css-player-slot js-player-slot-10">
+            <div class="css-nickname-display js-nickname-10">Nickname 10</div>
+          </div>
+
+          <div class="css-player-slot js-player-slot-11">
+            <div class="css-nickname-display js-nickname-11">Nickname 11</div>
+          </div>
+
+          <div class="css-player-slot js-player-slot-12">
+            <div class="css-nickname-display js-nickname-12">Nickname 12</div>
+          </div>
+
+          <div class="css-player-slot js-player-slot-13">
+            <div class="css-nickname-display js-nickname-13">Nickname 13</div>
+          </div>
+
+          <div class="css-player-slot js-player-slot-14">
+            <div class="css-nickname-display js-nickname-14">Nickname 14</div>
+          </div>
+
+          <div class="css-player-slot js-player-slot-15">
+            <div class="css-nickname-display js-nickname-15">Nickname 15</div>
+          </div>
+
+          <div class="css-player-slot js-player-slot-16">
+            <div class="css-nickname-display js-nickname-16">Nickname 16</div>
+          </div>
+        </div>
+
+        <div class="css-footer-area js-lobby-footer">
+          <button class="css-action-button js-host-start-button">
+            Start Game
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="question" id="page">
+      <div class="container">
+        <div class="circle">Ablaufender Timer</div>
+        <div class="question-box">gestellte Frage ...</div>
+      </div>
+    </div>
+    <div class="selection" id="page">
+      <div class="css-banner">
+        <div class="css-timer-container">
+          <div class="css-timer js-timer">20 Sek</div>
+        </div>
+        <div class="css-question js-question">Frage...</div>
+        <div class="css-question-count-container">
+          <div class="css-question-count js-question-count">0/16</div>
+        </div>
+      </div>
+      <div class="css-answer-container">
+        <div class="css-answer">
+          <div class="css-answer-text js-answer-text-1">Anwort A</div>
+        </div>
+        <div class="css-answer">
+          <div class="css-answer-text js-answer-text-2">Anwort B</div>
+        </div>
+        <div class="css-answer">
+          <div class="css-answer-text js-answer-text-3">Anwort C</div>
+        </div>
+        <div class="css-answer">
+          <div class="css-answer-text js-answer-text-4">Anwort D</div>
+        </div>
+      </div>
+    </div>
+    <div class="clientscore" id="page">
+      <h1>Spielname</h1>
+      <div id="playername">Spielername</div>
+      <div>Deine Platzierung: <span id="place">xx</span></div>
+      <!--Spiel(er)name und Platzierung sind nur Platzhalter-->
+    </div>
+    <div class="hostscore" id="page">
+      <h1>Spielname</h1>
+      <div class="name">Name</div>
+      <div class="place">1</div>
+      <div class="name">Name</div>
+      <div class="place">2</div>
+      <div class="name">Name</div>
+      <div class="place">3</div>
+      <!--Spielname und Namen sind nur Platzhalter-->
+    </div>
+    <div class="endpage" id="page">
+      <div class="css-banner">
+        <div class="css-game-name js-game-name">Spiel name</div>
+      </div>
+      <div class="css-selection-container">
+        <div class="css-selection">
+          <div class="css-selection-text">restart</div>
+          <div class="css-selection-text">quit</div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
