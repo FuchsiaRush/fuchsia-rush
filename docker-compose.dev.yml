@@ -28,10 +28,11 @@ services:
   cloudflared:
     image: cloudflare/cloudflared:latest
     container_name: cloudflare_tunnel
-    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    command: tunnel --no-autoupdate run --protocol auto --token ${CLOUDFLARE_TUNNEL_TOKEN}
     restart: unless-stopped
     depends_on:
       - app
+    network_mode: host
 
 volumes:
   db_data:
