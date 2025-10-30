@@ -6,7 +6,20 @@ window.socket = socket;
 
 //Richard##########################################################################################################################
 
+const url = new URL(document.location)
 
+function joinGame() {
+    socket.emit("join-room", { gameId: url.searchParams.get('gameId'), displayName: "Test User" });
+    console.log(`Connected to game with id: ${url.searchParams.get('gameId')}`);
+}
+
+joinGame()
+
+const sites = document.querySelectorAll("#page")
+
+sites.forEach(element => {
+    element.style.display = "none"
+});
 
 //##############################################################################################################################
 
