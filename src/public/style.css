@@ -9,10 +9,10 @@ body{
     background: linear-gradient(45deg, #d2001a,#7462ff,#f48e21,#23d5ab);
     background-size: 300% 300%;
     animation: color 20s ease-in-out infinite;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+}
+
+.hidden{
+    display: none;
 }
 
 @keyframes color{
@@ -26,9 +26,20 @@ body{
         background-position: 0 50%;
     }
 }
+
+@keyframes entry {
+    0%{
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100%{
+        transform: translate(0px);
+        opacity: 1;
+    }
+}
 .glass {
     background: rgba(255, 255, 255, 0);
-    border-radius: 16px;
+    border-radius: 0.5rem;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -52,15 +63,76 @@ body{
     justify-content: center;
 }
 
-.code-box{
-    display: flex;
+.host-box{
+    display: none;
     flex-direction: column;
     justify-content: center;
-    width: 20%;
-    height: 20%;
+    width: 25rem;
+    height: 15rem;
     align-items: center;
     padding: 1rem;
     margin: auto;
+    animation: 0.5s ease-out 0s 1 entry;
+}
+.host-box.shown{
+    display: flex;
+}
+.host-box label{
+    font-size: 1.5rem;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.host-box .join-label {
+    font-size: 1rem;
+    margin: 1rem;
+    color: white;
+    transition: 1.5s;
+}
+.host-box .join-label:hover {
+    cursor: pointer;
+    color: fuchsia;
+}
+
+.host-box .template{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.host-box .template h3{
+    margin: 0.5rem;
+    font-size: 1.5rem;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.host-button{
+    margin: 1.2rem;
+    padding: 0.7rem;
+    color: white;
+    font-weight: 600;
+    width: 10rem;
+    transition: 1s;
+}
+
+.host-button:hover{
+    background: #00000048;
+    background-size: 300% 300%;
+    cursor: pointer;
+}
+
+.code-box{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    width: 25rem;
+    height: 15rem;
+    align-items: center;
+    padding: 1rem;
+    margin: auto;
+    animation: 0.5s ease-out 0s 1 entry;
+}
+.code-box.shown{
+    display: flex;
 }
 
 .code-box label{
@@ -68,12 +140,22 @@ body{
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
+.code-box .host-label {
+    font-size: 1rem;
+    margin: 1rem;
+    color: white;
+    transition: 1.5s;
+}
+.code-box .host-label:hover {
+    cursor: pointer;
+    color: fuchsia;
+}
 
 .code-box input{
     text-align: center;
     background-color: rgba(0, 0, 0, 0.151);
     border: unset;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     padding: 0.7rem 0.3rem;
     margin: 1rem;
     color: white;
@@ -93,10 +175,13 @@ body{
     color: white;
     font-weight: 600;
     width: 50%;
+    transition: 1.5s;
 }
 
 .code-box button:hover{
     background: linear-gradient(90deg, #00000048,#00000002,#00000048, #00000002);
     background-size: 300% 300%;
     animation: color 3s ease-in-out infinite;
+    cursor: pointer;
+    background: #00000048;
 }

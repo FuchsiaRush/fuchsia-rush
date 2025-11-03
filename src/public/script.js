@@ -11,6 +11,7 @@ async function loadGameTemplates() {
     div.appendChild(title);
     const hostButton = document.createElement("button");
     hostButton.textContent = "Host Game";
+    hostButton.className = "host-button glass";
     hostButton.onclick = async () => {
       const res = await fetch("/api/v1/host-game", {
         method: "POST",
@@ -38,3 +39,20 @@ joinButton.onclick = () => {
     window.location.href = `/game?gameId=${gameId}&host=false`;
   }
 };
+
+const hostRedirect = document.querySelectorAll("#host-redirect");
+hostRedirect.forEach(element => {
+  element.addEventListener('click', (e) => {
+    const shownObjects = document.querySelectorAll(".shown");
+    const hiddenObjects = document.querySelectorAll(".hidden");
+  
+    shownObjects.forEach(element => {
+      element.classList.remove("shown");
+      element.classList.add("hidden");
+    });
+    hiddenObjects.forEach(element => {
+      element.classList.remove("hidden");
+      element.classList.add("shown");
+    });
+  })
+});

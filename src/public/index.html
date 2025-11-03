@@ -10,10 +10,16 @@
 <body>
   <div class="container">
     <div class="main">
-      <div class="code-box glass">
+      <div class="code-box glass shown">
         <label for="code-input" class="css-code-label js-code">Enter Code</label>
         <input type="text" id="code-input" class="code-input" placeholder="000000" maxlength="6" min="0" max="999999" required> 
         <button id="code-join-button" class="code-join-button glass">Join Game</button>
+        <label class="host-label" id="host-redirect" for="host">wanna host a game? Click Me!</label>
+      </div>
+    <div class="register">
+      <div class="host-box glass hidden">
+        <div class="game-bar"></div>
+        <label class="join-label" id="host-redirect" for="host">wanna join a game? Click Me!</label>
       </div>
     </div>
   </div>

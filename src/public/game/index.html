@@ -14,14 +14,18 @@
         <button id="join-button">Enter</button>
     </div>
     <div id="lobby" class="screen">
-        <!-- Only show this if we are the host => JS -->
-        <h1 id="game-id" style="display: none;"></h1>
-    
-        <h2>Waiting for the game to start...</h2>
-        <div id="lobby-players"></div>
-    
-        <!-- Only show this if we are the host => JS -->
-        <button id="start-button" style="display: none;">Start Game</button>
+        <div class="main">
+            <div class="container glass">
+                <!-- Only show this if we are the host => JS -->
+                <h1 id="game-id" style="display: none;"></h1>
+                
+                <h2>Waiting for the game to start...</h2>
+                <div id="lobby-players"></div>
+                
+                <!-- Only show this if we are the host => JS -->
+                <button id="start-button" style="display: none;">Start Game</button>
+            </div>
+        </div>
     </div>
     <div id="question" class="screen">
         <div id="question-text"></div>

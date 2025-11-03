@@ -47,6 +47,7 @@ socket.on("lobby-state", (players) => {
       socket.emit("start-game", { gameId });
     };
     startButton.style.display = "block";
+    startButton.classList.add("glass");
   }
   selectScreen("lobby");
 });
@@ -109,4 +110,16 @@ function selectScreen(screenId) {
   if (screen) {
     screen.classList.add("active");
   }
+}
+
+const gameIdH1 = document.getElementById("game-id");
+
+gameIdH1.onclick = () => {
+  let gameIdString = gameIdH1.innerText;
+  let gameIdArray = gameIdString.split(" ")
+  copyToClipboard(gameIdArray[2])
+}
+
+function copyToClipboard(input){
+  navigator.clipboard.writeText(input);
 }
